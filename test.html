@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Test title</title>
+    <style>
+    
+        p {
+            color: green
+        }
+    </style>
+</head>
+<body>
+    <div>Some content</div>
+    <div>
+        <input type="number" id="op1"/>
+        <input type="number" id="op2"/>
+        <button onclick="add()"> + </button>
+        <p id="result"></p>
+        <p id="rev"></p>
+        <button onclick="reverse()"> Reverse </button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+
+        function add(){
+            // console.log('add here!!')
+            // var a  = document.getElementById('op1').value;
+            // var b  = document.getElementById('op2').value;
+            // console.log(a, b)
+            // var c = parseInt(a) + parseInt(b);
+            // document.getElementById('result').innerHTML = c
+
+           $('#result').html($('#op1').val() * $('#op2').val()) 
+        }
+
+        function reverse(){
+            var reversedStr = $('#result').html().split('').reverse().join('')
+            $('#rev').html(reversedStr)
+        }
+
+
+
+    </script>
+</body>
+</html>
