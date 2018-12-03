@@ -25,6 +25,19 @@ export class AppComponent implements OnInit{
     })
   }
 
+
+  addCourse(title: string, summary: string){
+    console.log(title, summary)
+    var obj = {title, summary}
+    this.http.post('dummyUrl', obj)
+    .toPromise() 
+    .then((res)=> res.json())
+    .then((data)=> {
+      console.log(data)
+    })
+
+  }
+
   courses: Array<Course> = [
 
    

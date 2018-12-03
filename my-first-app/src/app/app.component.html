@@ -1,4 +1,33 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
+<div style="text-align:center">
+  <h1>
+    Add Course!
+  </h1>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+      </div>
+      <input #title (change)="0" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Summary</span>
+      </div>
+      <input #summary (change)="0" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="addCourse(title.value, summary.value)">Add Course</button>
+</div>
+
+
+
 <div style="text-align:center">
   <h1>
     Courses List!
