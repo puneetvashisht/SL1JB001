@@ -13,10 +13,13 @@ export class AppComponent implements OnInit{
 
   }
 
+  message: string = ''
+
   ngOnInit(){
     // perform initialization
-
-    this.http.get('assets/dummy.json')
+    // this.http.get('assets/dummy.json')
+    console.log('Init...')
+    this.http.get('http://localhost:3000/courses')
     .toPromise()
     .then((res)=> res.json())
     .then((data)=> {
@@ -29,11 +32,13 @@ export class AppComponent implements OnInit{
   addCourse(title: string, summary: string){
     console.log(title, summary)
     var obj = {title, summary}
-    this.http.post('dummyUrl', obj)
+    this.http.post('http://localhost:3000/courses', obj)
     .toPromise() 
     .then((res)=> res.json())
     .then((data)=> {
-      console.log(data)
+      console.log(data.message)
+      this.message = data.message
+
     })
 
   }
