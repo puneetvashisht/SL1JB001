@@ -8,6 +8,8 @@ import {HttpModule} from '@angular/http'
 import {RouterModule, Routes} from '@angular/router'
 import { ViewCoursesComponent } from './components/viewcourses.component';
 import { AddCoursesComponent } from './components/addcourses.component'
+import { ReversePipe } from './pipes/reverse.pipe';
+import { SearchCoursesPipe } from './pipes/search-courses.pipe';
 
 var routes: Routes = [
   {path: '', component: ViewCoursesComponent},
@@ -16,7 +18,7 @@ var routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, BadgeComponent, CardComponent, ViewCoursesComponent, AddCoursesComponent
+    AppComponent, BadgeComponent, CardComponent, ViewCoursesComponent, AddCoursesComponent, ReversePipe,SearchCoursesPipe
   ],
   imports: [
     BrowserModule, HttpModule, RouterModule.forRoot(routes)
