@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { CourseService } from '../services/course.service';
+import { Course } from '../model/course';
+import { LogService } from '../services/log.service';
 
 @Component({
     selector: 'course-add',
@@ -33,29 +36,49 @@ import { Http } from '@angular/http';
 
   <button type="button" class="btn btn-primary" (click)="addCourse(title.value, summary.value)">Add Course</button>
 </div>
-    `
+
+<div class="row">
+<input #message (change)="0" type="text" placeholder="Write message" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  <button type="button" class="btn btn-primary" (click)="addLog(message.value)">Add Message to Log</button>
+<div>
+
+<div class="row">
+        
+        <button type="button" class="btn btn-primary" (click)="getLogs()">Display Log</button>
+        <ul>
+            <li *ngFor="let msg of messages">{{msg}}</li>
+        </ul>
+        <div>
+    `,
+    providers: [LogService]
 })
 export class AddCoursesComponent implements OnInit {
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private courseService: CourseService, private logService: LogService) { }
 
     message: string = ''
+    messages: Array<string> = []
 
     ngOnInit() { 
 
     }
     addCourse(title: string, summary: string){
         console.log(title, summary)
-        var obj = {title, summary}
-        this.http.post('http://localhost:3000/courses', obj)
-        .toPromise() 
-        .then((res)=> res.json())
+        var course = new Course(title, summary)
+        this.courseService.addCourse(course)
         .then((data)=> {
           console.log(data.message)
           this.message = data.message
-    
         })
     
       }
+
+      addLog(message:string){
+        this.logService.log(message);
+      }
+
+      getLogs(){
+        this.messages = this.logService.fetchAll();
+    }
 
 }
