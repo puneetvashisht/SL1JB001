@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { CourseService } from '../services/course.service';
 import { Course } from '../model/course';
 import { LogService } from '../services/log.service';
+import { CourseLocalService } from '../services/course-local.service';
 
 @Component({
     selector: 'course-add',
@@ -54,7 +55,7 @@ import { LogService } from '../services/log.service';
 })
 export class AddCoursesComponent implements OnInit {
 
-    constructor(private http: Http, private courseService: CourseService, private logService: LogService) { }
+    constructor(private http: Http, private courseService: CourseLocalService, private logService: LogService) { }
 
     message: string = ''
     messages: Array<string> = []
