@@ -8,7 +8,13 @@ export class CategoryService {
 
 
     fetchAllCategories(): Promise<any>{
-       return this.http.get('assets/category.json')
+       return this.http.get('http://localhost:3000/categories')
+        .toPromise()
+        .then(res=>res.json())
+    }
+
+    addCategory(category:string): Promise<any>{
+        return this.http.post('http://localhost:3000/categories', {name:category})
         .toPromise()
         .then(res=>res.json())
     }
