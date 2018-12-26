@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+
+const baseUrl:string = 'http://localhost:3000/categories/'
+
 @Injectable()
 export class CategoryService {
     
@@ -8,19 +11,19 @@ export class CategoryService {
 
 
     fetchAllCategories(): Promise<any>{
-       return this.http.get('http://localhost:3000/categories/')
+       return this.http.get(baseUrl)
         .toPromise()
         .then(res=>res.json())
     }
 
     addCategory(category:string): Promise<any>{
-        return this.http.post('http://localhost:3000/categories/', {name:category})
+        return this.http.post(baseUrl, {name:category})
         .toPromise()
         .then(res=>res.json())
     }
 
     deleteCategory(id: string): Promise<any>{
-        return this.http.delete('http://localhost:3000/categories/'+id)
+        return this.http.delete(baseUrl+id)
         .toPromise()
         .then(res=>res.json())
 
