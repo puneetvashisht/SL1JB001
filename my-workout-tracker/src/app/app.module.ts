@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router'
 import {HttpModule} from '@angular/http'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category.component';
 import { ViewWorkoutComponent } from './components/view-workout.component';
@@ -20,7 +21,7 @@ const appRoutes: Routes = [
     AppComponent, CategoryComponent, ViewWorkoutComponent, AddWorkoutComponent, SearchPipe
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes), HttpModule
+    BrowserModule, RouterModule.forRoot(appRoutes), HttpModule, FormsModule,ReactiveFormsModule
   ],
   providers: [CategoryService],
   bootstrap: [AppComponent]
