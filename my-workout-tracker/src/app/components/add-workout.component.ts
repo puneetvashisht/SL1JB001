@@ -3,6 +3,7 @@ import { Category } from '../models/Category';
 import { CategoryService } from '../services/category.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Workout } from '../models/Workout';
+import { WorkoutService } from '../services/workout.service';
 
 @Component({
     selector: 'add-workout',
@@ -35,8 +36,8 @@ import { Workout } from '../models/Workout';
         <div class="input-group-prepend">
             <span class="input-group-text" id="category">Category</span>
         </div>
-        <select class="form-control" id="category">
-            <option *ngFor="let category of categories">{{category.name}}</option>
+        <select class="form-control" id="category" formControlName="category">
+            <option *ngFor="let category of categories" value={{category._id}}>{{category.name}}</option>
         </select>
         </div>
 
@@ -59,7 +60,7 @@ export class AddWorkoutComponent implements OnInit {
 
     categories: Array<Category> = []
 
-    constructor(private categoryService: CategoryService) { }
+    constructor(private categoryService: CategoryService, private workoutService: WorkoutService) { }
 
     workoutForm: FormGroup
 
@@ -70,6 +71,7 @@ export class AddWorkoutComponent implements OnInit {
             'title': new FormControl('', [Validators.required]),
             'notes': new FormControl(''),
             'cbpm': new FormControl('', [Validators.required]),
+            'category': new FormControl('', [Validators.required])
             // 'alterEgo': new FormControl(this.hero.alterEgo),
             // 'power': new FormControl(this.hero.power, Validators.required)
           });
@@ -87,6 +89,7 @@ export class AddWorkoutComponent implements OnInit {
         
         console.log('add workout service to be invoked')
         console.log(this.workoutForm.value)
+        this.workoutService.addWorkout(this.workoutForm.value)
     }
 
 }

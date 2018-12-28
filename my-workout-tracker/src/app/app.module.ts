@@ -9,21 +9,24 @@ import { ViewWorkoutComponent } from './components/view-workout.component';
 import { CategoryService } from './services/category.service';
 import { SearchPipe } from './pipes/search.pipe';
 import { AddWorkoutComponent } from './components/add-workout.component';
+import { WorkoutService } from './services/workout.service';
+import { StartWorkoutComponent } from './components/start-workout.component';
 
 const appRoutes: Routes = [
   { path: '', component: CategoryComponent },
   { path: 'view',component: ViewWorkoutComponent },
-  { path: 'create',component: AddWorkoutComponent }
+  { path: 'create',component: AddWorkoutComponent },
+  { path: 'start',component: StartWorkoutComponent }
 ]
 
 @NgModule({
   declarations: [
-    AppComponent, CategoryComponent, ViewWorkoutComponent, AddWorkoutComponent, SearchPipe
+    AppComponent, CategoryComponent, ViewWorkoutComponent, AddWorkoutComponent, StartWorkoutComponent, SearchPipe
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpModule, FormsModule,ReactiveFormsModule
   ],
-  providers: [CategoryService],
+  providers: [CategoryService, WorkoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
