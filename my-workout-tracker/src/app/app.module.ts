@@ -11,6 +11,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { AddWorkoutComponent } from './components/add-workout.component';
 import { WorkoutService } from './services/workout.service';
 import { StartWorkoutComponent } from './components/start-workout.component';
+import { WorkoutActiveService } from './services/workout-active.service';
 
 const appRoutes: Routes = [
   { path: '', component: CategoryComponent },
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpModule, FormsModule,ReactiveFormsModule
   ],
-  providers: [CategoryService, WorkoutService],
+  providers: [CategoryService, WorkoutService, WorkoutActiveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
