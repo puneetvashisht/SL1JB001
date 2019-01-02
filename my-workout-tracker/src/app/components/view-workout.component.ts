@@ -52,7 +52,7 @@ import { Router } from '@angular/router';
             <button type="button" class="btn btn-secondary" (click)="startWorkout(workout._id, workout.title, workout.notes)"> Start </button>
         </div>
         <div class="col-3">
-            <button type="button" class="btn btn-secondary" (click)="deleteCategory(category._id)"> End </button>
+            <button type="button" class="btn btn-secondary" (click)="endWorkout(workout._id, workout.title, workout.notes)"> End </button>
         </div>
        
         </div>
@@ -79,6 +79,9 @@ export class ViewWorkoutComponent implements OnInit {
 
     startWorkout(id: string, title:string, notes:string){
         this.router.navigate(['start', {id, notes, title}]);
+    }
+    endWorkout(id: string, title:string, notes:string){
+        this.router.navigate(['end', {id, notes, title}]);
     }
 
 }

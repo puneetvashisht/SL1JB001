@@ -5,11 +5,11 @@ import { Workout } from '../models/Workout';
 import { WorkoutActiveService } from '../services/workout-active.service';
 
 @Component({
-    selector: 'start-workout',
+    selector: 'end-workout',
     template: `
-    <h2>Start Workout Component</h2>
+    <h2>End Workout Component</h2>
 
-    <form [formGroup]="workoutForm" (submit)="startWorkout()">
+    <form [formGroup]="workoutForm" (submit)="endWorkout()">
         <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Title</span>
@@ -26,25 +26,25 @@ import { WorkoutActiveService } from '../services/workout-active.service';
 
         <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Start Date</span>
+            <span class="input-group-text" id="basic-addon1">End Date</span>
         </div>
        {{now | date:'mediumDate'}}
         </div>
 
         <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="enddate">Start Time</span>
+            <span class="input-group-text" id="enddate">End Time</span>
         </div>
         {{now | date:'mediumTime'}}
         </div>
 
         <div class="input-group mb-3">
-        <button type="submit" class="btn btn-secondary"> Start Workout </button>
+        <button type="submit" class="btn btn-secondary"> End Workout </button>
     </div>
     </form>
     `
 })
-export class StartWorkoutComponent implements OnInit {
+export class EndWorkoutComponent implements OnInit {
 
     now: Date = new Date();
 
@@ -72,10 +72,10 @@ export class StartWorkoutComponent implements OnInit {
 
     }
 
-    startWorkout(){
+    endWorkout(){
         console.log('add workout active service to be invoked')
         console.log(this.workoutForm.value.id.value)
-       this.workoutActiveService.startWorkout(this.workoutForm.value.id.value)
+       this.workoutActiveService.endWorkout(this.workoutForm.value.id.value)
     }
 
 }
