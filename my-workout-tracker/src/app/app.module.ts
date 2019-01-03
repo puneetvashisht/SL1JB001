@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router'
 import {HttpModule} from '@angular/http'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category.component';
 import { ViewWorkoutComponent } from './components/view-workout.component';
@@ -15,6 +17,7 @@ import { WorkoutActiveService } from './services/workout-active.service';
 import { EndWorkoutComponent } from './components/end-workout.component';
 import { TrackerComponent } from './components/tracker.component';
 import { TrackerService } from './services/tracker.service';
+import { GraphComponent } from './components/graph/graph.component';
 
 const appRoutes: Routes = [
   { path: '', component: CategoryComponent },
@@ -27,10 +30,11 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, CategoryComponent, ViewWorkoutComponent, AddWorkoutComponent, StartWorkoutComponent, EndWorkoutComponent, TrackerComponent, SearchPipe
+    AppComponent, CategoryComponent, ViewWorkoutComponent, AddWorkoutComponent, StartWorkoutComponent, EndWorkoutComponent, TrackerComponent, SearchPipe, GraphComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes), HttpModule, FormsModule,ReactiveFormsModule
+    BrowserModule, RouterModule.forRoot(appRoutes), HttpModule, FormsModule,ReactiveFormsModule,NgxChartsModule,
+    BrowserAnimationsModule 
   ],
   providers: [CategoryService, WorkoutService, WorkoutActiveService, TrackerService],
   bootstrap: [AppComponent]

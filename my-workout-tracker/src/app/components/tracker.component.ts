@@ -10,6 +10,10 @@ import { TrackerService } from '../services/tracker.service';
             <li *ngFor="let caloryLog of caloriesLog">{{caloryLog.date | date:'fullDate'}} : {{caloryLog.cspent}}</li>
         </ul>
 
+        <hr>
+
+        <app-graph></app-graph>
+
     `
 })
 export class TrackerComponent implements OnInit {
